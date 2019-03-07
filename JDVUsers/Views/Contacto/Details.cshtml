@@ -1,0 +1,109 @@
+﻿@model JDVusers.Models.Contacto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contacto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoContacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoContacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorreoElectronico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorreoElectronico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RFC)
+        </dd>
+
+    </dl>
+</div>
+
+@{
+    if (Model.Telefonos.Count > 0)
+    {
+        <h4>Telefonos</h4>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Tipo de Telefono</th>
+                    <th>Numero</th>
+                </tr>
+                @foreach (var tel in Model.Telefonos)
+                {
+                    <tr>
+                        <td>@tel.TipoTelefono</td>
+                        <td>@tel.Numero</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    if (Model.Direcciones.Count > 0)
+    {
+        <h4>Direcciones</h4>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Tipo de Direccion</th>
+                    <th>Pais</th>
+                    <th>Ciudad</th>
+                    <th>Estado</th>
+                    <th>Colonia</th>
+                    <th>Calle</th>
+                    <th>Numero</th>
+                    <th>CodigoPostal</th>
+                </tr>
+                @foreach (var dir in Model.Direcciones)
+                {
+                    <tr>
+                        <td>@dir.TipoDireccion</td>
+                        <td>@dir.Pais</td>
+                        <td>@dir.Ciudad</td>
+                        <td>@dir.Estado</td>
+                        <td>@dir.Colonia</td>
+                        <td>@dir.Calle</td>
+                        <td>@dir.Numero</td>
+                        <td>@dir.CodigoPostal</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
